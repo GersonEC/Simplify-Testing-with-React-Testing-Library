@@ -1,3 +1,5 @@
-const App = () => <h1>Replace me with chapter related components </h1> 
+import Vote2 from './Vote2';
+
+const App = () => <Vote2 totalGlobalLikes={10} />
 
 export default App
