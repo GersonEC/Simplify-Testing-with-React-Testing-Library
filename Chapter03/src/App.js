@@ -1,5 +1,5 @@
-import Vote2 from './Vote2';
+import DrinkSearch from './DrinkSearch';
 
-const App = () => <Vote2 totalGlobalLikes={10} />
+const App = () => <DrinkSearch />
 
 export default App
