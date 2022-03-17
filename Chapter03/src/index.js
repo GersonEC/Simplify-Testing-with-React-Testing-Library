@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './App'
 
 /* 
-Comment out the next 3 links 
+Comment out the next 3 lines
 when you want to use the real API
 */
 if (process.env.NODE_ENV === 'development') {

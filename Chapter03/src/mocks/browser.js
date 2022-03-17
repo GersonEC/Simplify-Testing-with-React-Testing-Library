@@ -3,7 +3,7 @@ import { rest, setupWorker } from 'msw'
 const drinks = [
   {
     idDrink: '11457',
-    strDrink: 'Gin Fizz',
+    strDrink: 'Gin FizzBuzz',
     strInstructions:
       'Shake all ingredients with ice cubes, except soda water. Pour into glass. Top with soda water.',
     strDrinkThumb:
