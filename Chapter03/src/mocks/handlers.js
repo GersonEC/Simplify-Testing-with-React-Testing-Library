@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 
 export const handlers = [
-  rest.get(
+  /*rest.get(
     'https://www.thecocktaildb.com/api/json/v1/1/search.php',
     (req, res, ctx) => {
       return res(
@@ -19,6 +19,22 @@ export const handlers = [
         })
       )
     }
+  ),*/
+  /*rest.get(
+    'https://www.thecocktaildb.com/api/json/v1/1/search.php',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          drinks: null
+        })
+      )
+    }
+  ),*/
+  rest.get(
+    'https://www.thecocktaildb.com/api/json/v1/1/search.php',
+    (req, res, ctx) => {
+      return res(ctx.status(503))
+    }
   )
 ]
-
