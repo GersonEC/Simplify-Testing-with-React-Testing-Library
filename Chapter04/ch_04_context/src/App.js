@@ -1,3 +1,11 @@
-const App = () => <h1>Replace me with chapter related components </h1> 
+import Retail from './Retail'
+import { RetailProvider } from './RetailContext'
+import retailProducts from './api/retailProducts'
+
+const App = () => (
+  <RetailProvider products={retailProducts}>
+    <Retail />
+  </RetailProvider>
+)
 
 export default App

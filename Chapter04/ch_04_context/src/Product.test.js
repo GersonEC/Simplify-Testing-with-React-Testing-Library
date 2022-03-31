@@ -5,24 +5,28 @@ import Product from './Product'
 import { RetailProvider } from './RetailContext'
 
 test('Product, given product properties, renders to screen', () => {
-  const product = {
-    id: faker.random.uuid(),
+  const mockProduct = {
     title: faker.commerce.productName(),
     price: faker.commerce.price(),
-    image: faker.image.fashion()
+    image: faker.image.fashion(),
+    id: faker.random.uuid()
   }
 
   render(
-    <RetailProvider products={fakeProducts}>
+    <RetailProvider products={[]}>
       <Product
-        id={product.id}
-        title={product.title}
-        price={product.price}
-        image={product.image}
+        title={mockProduct.title}
+        price={mockProduct.price}
+        image={mockProduct.image}
       />
     </RetailProvider>
   )
 
-  expect(screen.getByText(product.title)).toBeInTheDocument()
-  expect(screen.getByText(`$${product.price}`)).toBeInTheDocument()
+  const title = screen.getByText(mockProduct.title)
+  const price = screen.getByText(`$${mockProduct.price}`)
+  const img = screen.getByRole('img')
+
+  expect(title).toBeInTheDocument()
+  expect(price).toBeInTheDocument()
+  expect(img).toBeInTheDocument()
 })

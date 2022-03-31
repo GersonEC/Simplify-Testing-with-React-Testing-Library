@@ -47,7 +47,6 @@ describe('Integration: Product Details', () => {
         name: firstProduct.title
       })
     )
-
     expect(
       screen.getAllByRole('heading', { name: firstProduct.title }).length
     ).toEqual(2)
@@ -67,20 +66,38 @@ describe('Integration: Product Details', () => {
 
     expect(screen.getByText(/1 items/i)).toBeInTheDocument()
   })
-
-  test('A user can update the quantity for cart items', () => {
+  test.only('A user can update the quantity for cart items G', () => {
     render(
       <RetailProvider products={fakeProducts}>
         <Retail />
       </RetailProvider>
     )
     addFirstItemToCart()
-    const quantityInput = screen.getByRole('spinbutton')
-    user.clear(quantityInput)
-    user.type(quantityInput, '10')
-    user.click(screen.getByRole('button', { name: /add to cart/i }))
+    const inputQuantity = screen.getByRole('spinbutton')
+    const addToCartButton = screen.getByRole('button', { name: /add to cart/i })
 
-    expect(screen.getByText(/qty:10/i)).toBeInTheDocument()
+    user.clear(inputQuantity)
+    user.type(inputQuantity, '5')
+    user.click(addToCartButton)
+
+    expect(screen.getByText(/qty:5/i)).toBeInTheDocument()
+  })
+
+  test.only('A user cannot submit a quantity greater than 10 G', () => {
+    render(
+      <RetailProvider products={fakeProducts}>
+        <Retail />
+      </RetailProvider>
+    )
+    addFirstItemToCart()
+    const inputQuantity = screen.getByRole('spinbutton')
+    const addToCartButton = screen.getByRole('button', { name: /add to cart/i })
+
+    user.clear(inputQuantity)
+    user.type(inputQuantity, '11')
+    user.click(addToCartButton)
+
+    expect(screen.getByText(/qty:1/i)).toBeInTheDocument()
   })
 
   test('A user cannot submit a quantity greater than 10', () => {
