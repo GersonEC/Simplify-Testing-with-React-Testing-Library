@@ -5,8 +5,9 @@ import Vote from './Vote'
 describe('Vote', () => {
   test('given "up" vote, total likes increases by one', () => {
     render(<Vote totalGlobalLikes={10} />)
+    const thumbsUpBtn = screen.getByRole('button', { name: /thumbs up/i })
 
-    user.click(screen.getByRole('button', { name: /thumbs up/i }))
+    user.click(thumbsUpBtn)
 
     expect(screen.getByText(/11/i)).toBeInTheDocument()
   })
@@ -30,5 +31,6 @@ describe('Vote', () => {
     user.click(thumbsDownBtn)
 
     expect(screen.getByText(/11/i)).toBeInTheDocument()
+    expect(thumbsUpBtn).toBeDisabled()
   })
 })
